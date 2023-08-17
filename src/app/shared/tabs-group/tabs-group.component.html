@@ -1,0 +1,14 @@
+<div *ngIf="items$ | async as items" class="container">
+  <div class="container__header">
+    <button
+      *ngFor="let item of items; index as i"
+      class="tab"
+      (click)="onTabClick(i)"
+    >
+      {{ item.label }}
+    </button>
+  </div>
+  <div *ngIf="item$ | async as item" class="container__content">
+    <ng-container *ngTemplateOutlet="item.content"></ng-container>
+  </div>
+</div>
